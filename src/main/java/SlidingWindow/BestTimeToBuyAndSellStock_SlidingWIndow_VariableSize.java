@@ -1,7 +1,7 @@
 package SlidingWindow;
 
-public class BestTimeToBuyAndSellStock {
-
+public class BestTimeToBuyAndSellStock_SlidingWIndow_VariableSize {
+    // Sliding window variable size
     public int maxProfit(int[] prices) {
         int maxProfit = 0;
         if(prices.length < 2){
@@ -22,7 +22,7 @@ public class BestTimeToBuyAndSellStock {
 
     public static void main(String[] args){
         int[] prices = {10,1,5,6,7,1};
-        BestTimeToBuyAndSellStock bt = new BestTimeToBuyAndSellStock();
+        BestTimeToBuyAndSellStock_SlidingWIndow_VariableSize bt = new BestTimeToBuyAndSellStock_SlidingWIndow_VariableSize();
         int maxProfit = bt.maxProfit(prices);
         System.out.println(maxProfit);
     }
