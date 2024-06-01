@@ -26,8 +26,13 @@ public class BinarySearch {
         return -1;
     }
     // https://leetcode.com/problems/binary-search/
-    // Idea is to think a way to find the position to insert the target element instead of finding the target
-    // element
+    // Idea is to think a way to ..
+    // ..find the position to insert the target element instead of finding the target
+    // element.
+    // In below code while loop will find the position to insert the target element.
+    // if block below the while loop will find the index of the target element if exist in the array or..
+    // returns -1 if not exist in the input array.
+
     public int binarySearchIterative_FindLastOccurrenceOfTargetElement(int[] nums, int target) {
         int low = 0;
         int high = nums.length; // note maximum insert position could be nums.length
