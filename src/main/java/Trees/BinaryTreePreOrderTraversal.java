@@ -19,12 +19,10 @@ public class BinaryTreePreOrderTraversal {
             TreeNode current = treeNodeStack.pop();
             if (current.right != null) {
                 current = current.right;
-                list.add(current.val);
-                System.out.println(current.val);
                 while (current != null) {
-                    current = current.left;
-                    System.out.println(current.val);
                     list.add(current.val);
+                    System.out.println(current.val);
+                    treeNodeStack.add(current);
                     current = current.left;
                 }
             }
