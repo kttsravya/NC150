@@ -39,6 +39,4 @@ public class LastStoneWeight {
             return (int)maxHeap.poll();
         }
     }
-
-
 }
