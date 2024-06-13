@@ -10,7 +10,7 @@ public class WallsAndGates {
                         {2147483647,-1,2147483647,-1},
                         {0,-1,2147483647,2147483647}};
         WallsAndGates wallsAndGates = new WallsAndGates();
-        wallsAndGates.islandsAndTreasure(grid);
+        wallsAndGates.islandsAndTreasureOptimal(grid);
         for(int i = 0 ; i < grid.length; i ++){
             for(int j = 0; j < grid[i].length; j ++){
                 System.out.print(grid[i][j] + " ");
@@ -19,6 +19,7 @@ public class WallsAndGates {
         }
     }
 
+    // Time complexity: O(m^2*n^2)
     public void islandsAndTreasure(int[][] grid) {
 
         for(int i = 0; i < grid.length; i ++){
@@ -30,6 +31,55 @@ public class WallsAndGates {
             }
         }
         //System.out.println("Shortest distance" + getShortestDistanceToTreasureForCurrentCell(1, 1, grid));
+    }
+
+    // Time complexity: O(m*n)
+    public void islandsAndTreasureOptimal(int[][] grid) {
+        Queue<GridNode> queue = new LinkedList<>();
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 0) {
+                    queue.add(new GridNode(i, j));
+                    visited[i][j] = true;
+                }
+            }
+        }
+        islandsAndTreasureOptimalHelper(queue, grid, visited);
+    }
+
+    private void islandsAndTreasureOptimalHelper(Queue<GridNode> queue, int[][] grid, boolean[][] visited) {
+        int level = 0;
+        while(!queue.isEmpty()){
+            int numOfNodesAtLevel = queue.size();
+            for(int i = 0; i < numOfNodesAtLevel; i ++){
+                GridNode current = queue.poll();
+                int row = current.row;
+                int col = current.col;
+                System.out.println("Visiting row " + row + "col "+col);
+                if(row + 1 < grid.length && grid[row+1][col] != -1 && !visited[row+1][col]){
+                  grid[row + 1][col] = level + 1;
+                  queue.add(new GridNode(row + 1, col));
+                  visited[row + 1][col] = true;
+                }
+                if(row - 1 >= 0 && grid[row - 1][col] != -1 && !visited[row - 1][col]){
+                    grid[row - 1][col] = level + 1;
+                    queue.add(new GridNode(row - 1, col));
+                    visited[row - 1][col] = true;
+                }
+                if(col - 1 >= 0 && grid[row][col - 1] != -1 && !visited[row][col - 1]){
+                    grid[row][col - 1] = level + 1;
+                    queue.add(new GridNode(row, col - 1));
+                    visited[row][col - 1] = true;
+                }
+                if(col + 1 < grid[row].length && grid[row][col + 1] != -1 && !visited[row][col+ 1]){
+                    grid[row][col + 1] = level + 1;
+                    queue.add(new GridNode(row, col + 1));
+                    visited[row][col + 1] = true;
+                }
+            }
+            level = level + 1;
+            }
     }
 
     private int getShortestDistanceToTreasureForCurrentCell(int i, int j, int[][] grid) {
