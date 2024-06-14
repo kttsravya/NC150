@@ -42,7 +42,7 @@ public class PlusOne {
        }
        return res;
     }
-
+    //1,2,3,4
     public int[] plusOne_CarryReminder(int[] digits) {
         List<Integer> list = new ArrayList<>();
         int one = 1;
@@ -51,19 +51,17 @@ public class PlusOne {
         for (int i = 0; i < digits.length; i++) {
             list.add(0, digits[i]);
         }
-        while(one != 0){
-            if(iterator < list.size()){
+        while(iterator < list.size() && one != 0){
                 if(list.get(iterator) == 9){
                     list.set(iterator, 0);
                 }else{
                     list.set(iterator, list.get(iterator) + 1);
                     one = 0;
                 }
-            }else{
-                list.add(one);
-                one = 0;
-            }
             iterator ++;
+        }
+        if(one == 1) {
+            list.add(one);
         }
         Collections.reverse(list);
         int[] result = new int[list.size()];
