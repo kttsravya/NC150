@@ -7,6 +7,10 @@ public class FindDuplicates {
         System.out.println(duplicate);
     }
 
+    //Floyd's algorithm
+   // Step 1: slow pointer move by 1 and fast pointer move by 2 steps. and if they meet, cycle is detected
+    // step 2: bring one of the pointer to begining of the list. now move each pointer by 1 step. the point they meet is the start of the cycle.
+
     public int findDuplicate(int[] nums) {
         int slow = 0;
         int fast = 0;
