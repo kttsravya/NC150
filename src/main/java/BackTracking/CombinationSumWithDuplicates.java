@@ -40,7 +40,6 @@ public class CombinationSumWithDuplicates {
             return;
         }
 
-
         combination.add(candidates[index]);
         combinationSum2Helper(index + 1, candidates, target - candidates[index], combination, res);
 

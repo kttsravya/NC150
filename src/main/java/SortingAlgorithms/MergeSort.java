@@ -16,18 +16,18 @@ public class MergeSort {
         mergeSort(randomIntegers);
     }
 
-    private void mergeSort(int[] randomIntegers) {
-        System.out.println(Arrays.toString(randomIntegers));
-        if(randomIntegers.length < 2){
+    private void mergeSort(int[] input) {
+        System.out.println(Arrays.toString(input));
+        if(input.length < 2){
             return;
         }
-        int midPoint = randomIntegers.length/2;
-        int[] leftSubArray = Arrays.copyOfRange(randomIntegers, 0, midPoint);
-        int[] rightSubArray = Arrays.copyOfRange(randomIntegers, midPoint, randomIntegers.length);
+        int midPoint = input.length/2;
+        int[] leftSubArray = Arrays.copyOfRange(input, 0, midPoint);
+        int[] rightSubArray = Arrays.copyOfRange(input, midPoint, input.length);
         mergeSort(leftSubArray);
         mergeSort(rightSubArray);
         // this method takes two sorted subarray and merge them. leftSubArray and rightSubArray are two sorted subarrayes.
-        merge(randomIntegers, leftSubArray, rightSubArray);
+        merge(input, leftSubArray, rightSubArray);
     }
 
     private void merge(int[] randomIntegers, int[] leftSubArray, int[] rightSubArray) {
