@@ -4,9 +4,9 @@ import org.junit.Assert;
 
 import java.util.*;
 
-public class CourseSchedule {
+public class CourseSchedule_DetectCycleInDirectedGraph {
     public static void main(String[] args) {
-            CourseSchedule courseSchedule = new CourseSchedule();
+            CourseSchedule_DetectCycleInDirectedGraph courseSchedule = new CourseSchedule_DetectCycleInDirectedGraph();
             boolean canFin = courseSchedule.canFinish(2, new int[][]{{0,1}});
             Assert.assertEquals(true, canFin);
     }

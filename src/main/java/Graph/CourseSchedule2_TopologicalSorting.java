@@ -2,10 +2,11 @@ package Graph;
 
 import java.util.*;
 
-public class CourseSchedule2 {
+// Topological sorting reverse order
+public class CourseSchedule2_TopologicalSorting {
     public static void main(String[] args){
-        CourseSchedule2 courseSchedule2 = new CourseSchedule2();
-        int[] res = courseSchedule2.findOrder(3, new int[][]{{1,0}});
+        CourseSchedule2_TopologicalSorting courseSchedule2TopologicalSorting = new CourseSchedule2_TopologicalSorting();
+        int[] res = courseSchedule2TopologicalSorting.findOrder(3, new int[][]{{1,0}});
         System.out.println(Arrays.toString(res));
     }
 
