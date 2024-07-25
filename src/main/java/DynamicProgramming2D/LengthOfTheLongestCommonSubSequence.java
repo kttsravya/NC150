@@ -16,7 +16,7 @@ public class LengthOfTheLongestCommonSubSequence {
     }
 
     // *** Sliding window solution has some bug and not working
-    public int longestCommonSubsequenceSlidingWindow(String text1, String text2) {
+   /* public int longestCommonSubsequenceSlidingWindow(String text1, String text2) {
         if (text1.isEmpty() || text2.isEmpty()) {
             return 0;
         }
@@ -65,7 +65,7 @@ public class LengthOfTheLongestCommonSubSequence {
         }
         return longestCommonSubSequence;
     }
-
+*/
     public int longestCommonSubsequenceUsingRecursion_Memoization(String text1, String text2) {
         int text1Pointer = 0;
         int text2Pointer = 0;
