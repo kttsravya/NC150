@@ -1,4 +1,4 @@
-package DynamicProgramming1D;
+package DynamicProgramming1D.FibonnaciSeriesPattern;
 
 import java.util.ArrayList;
 import java.util.HashMap;

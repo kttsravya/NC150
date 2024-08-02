@@ -1,4 +1,4 @@
-package DynamicProgramming2D;
+package DynamicProgramming2D.StringSubSequencePattern;
 
 import java.util.Arrays;
 import java.util.HashMap;

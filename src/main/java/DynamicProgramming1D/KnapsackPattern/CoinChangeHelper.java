@@ -1,4 +1,4 @@
-package DynamicProgramming1D;
+package DynamicProgramming1D.KnapsackPattern;
 
 
 import java.util.Arrays;

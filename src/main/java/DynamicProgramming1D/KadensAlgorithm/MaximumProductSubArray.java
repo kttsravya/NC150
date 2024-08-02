@@ -1,4 +1,4 @@
-package DynamicProgramming1D;
+package DynamicProgramming1D.KadensAlgorithm;
 
 //https://leetcode.com/problems/maximum-product-subarray/editorial/
 // this is an optimization of kadanes algorithm

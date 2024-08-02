@@ -1,4 +1,4 @@
-package DynamicProgramming1D;
+package DynamicProgramming1D.FibonnaciSeriesPattern;
 
 public class ClimbingStairs_BottomsUpApproach_DP {
     public static void main(String[] args){
