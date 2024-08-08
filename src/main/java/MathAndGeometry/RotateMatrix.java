@@ -19,9 +19,36 @@ public class RotateMatrix {
                 {12, 13, 14, 15}
         };
         RotateMatrix rotateMatrix = new RotateMatrix();
-        rotateMatrix.rotate(matrix);
+        rotateMatrix.rotate_Revised(matrix);
         for (int i = 0; i < matrix.length; i++) {
             System.out.println(Arrays.toString(matrix[i]));
+        }
+    }
+
+    public void rotate_Revised(int[][] matrix) {
+        int top = 0;
+        int left = 0;
+        int bottom = matrix.length - 1;
+        int right = matrix.length - 1;
+
+        // total number of rotations required
+        while (top < matrix.length/2) {
+            System.out.println("while loop");
+            int positionFromLeft = 0;
+            // shift all elements within the given rotation by 90 degree
+            while (left + positionFromLeft < right){
+                System.out.println("for loop");
+                int temp = matrix[top][left + positionFromLeft];
+                matrix[top][left + positionFromLeft] = matrix[bottom-positionFromLeft][left];
+                matrix[bottom - positionFromLeft][left] = matrix[bottom][right-positionFromLeft];
+                matrix[bottom][right - positionFromLeft] = matrix[top + positionFromLeft][right];
+                matrix[top + positionFromLeft][right] = temp;
+                positionFromLeft ++;
+            }
+            top++;
+            bottom--;
+            left++;
+            right--;
         }
     }
 
@@ -52,4 +79,6 @@ public class RotateMatrix {
             right--;
         }
     }
+
+
 }

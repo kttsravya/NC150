@@ -3,14 +3,42 @@ package DynamicProgramming1D;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-// Leetcode Editorial video appraoch
+// Leetcode Editorial video approach
 public class WordBreak {
     public static void main(String[] args){
         WordBreak wordBreak = new WordBreak();
         List<String> dict = Arrays.asList("l", "le","lee","leet","code");
-        boolean doesWordBreak = wordBreak.wordBreak_BottomUp("leetcode", dict);
+        boolean doesWordBreak = wordBreak.wordBreak_Revision("leetcode", dict);
         System.out.println(doesWordBreak);
     }
+
+    public boolean wordBreak_Revision(String s, List<String> wordDict) {
+        Boolean[] cache = new Boolean[s.length()];
+        return wordBreakRevisionHelper(s, 0, wordDict, cache);
+    }
+
+    private boolean wordBreakRevisionHelper(String s, int index, List<String> wordDict, Boolean[] cache) {
+        if (index == s.length()) {
+            return true;
+        }
+        if(cache[index] != null){
+            System.out.println("looking up cache");
+            return cache[index];
+        }
+        int startIndex = index;
+        for (int i = index + 1; i <= s.length(); i++) {
+            String subString = s.substring(startIndex, i);
+            if (wordDict.contains(subString)) {
+                if (wordBreakRevisionHelper(s, i, wordDict, cache)) {
+                    return cache[index] =  true;
+                }else{
+                    cache[i] = false;
+                }
+            }
+        }
+        return cache[index] = false;
+    }
+
 
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> dict = new HashSet<>();
