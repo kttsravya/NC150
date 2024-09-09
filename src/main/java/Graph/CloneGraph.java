@@ -16,9 +16,35 @@ public class CloneGraph {
         second.neighbors.add(third);
         third.neighbors.add(second);
         CloneGraph c = new CloneGraph();
-        Node deepCopy = c.cloneGraphUsingHashMap(first);
+        Node deepCopy = c.cloneGraphUsingHashMapRev(first);
         System.out.println(deepCopy.val);
     }
+
+    public Node cloneGraphUsingHashMapRev(Node node) {
+        if(node == null){
+            return null;
+        }
+        Map<Node, Node> oldToNewNodeMapping = new HashMap<>();
+        List<Node> currentPath = new ArrayList<>();
+        Node cloneNodeHead = cloneGraphHelperUsingHashMapHelper(node, oldToNewNodeMapping, currentPath);
+        return cloneNodeHead;
+    }
+
+    private Node cloneGraphHelperUsingHashMapHelper(Node node, Map<Node, Node> oldToNewNodeMapping, List<Node> currentPath) {
+        if(currentPath.contains(node)){
+            return oldToNewNodeMapping.get(node);
+        }
+        Node cloneNode = oldToNewNodeMapping.getOrDefault(node, new Node(node.val));
+        oldToNewNodeMapping.put(node, cloneNode);
+        currentPath.add(node);
+        for(int i = 0; i < node.neighbors.size(); i ++){
+            Node neighbor = node.neighbors.get(i);
+            cloneNode.neighbors.add(cloneGraphHelperUsingHashMapHelper(neighbor, oldToNewNodeMapping, currentPath));
+        }
+
+        return cloneNode;
+    }
+
 
 
     public Node cloneGraph(Node node) {

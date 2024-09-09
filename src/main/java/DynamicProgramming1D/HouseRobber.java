@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class HouseRobber {
     public static void main(String[] args){
         HouseRobber houseRobber = new HouseRobber();
-        int rob = houseRobber.rob(new int[]{1,2,3,1});
+        int rob = houseRobber.robRev(new int[]{5,1,2,10,6,2,7,9,3,1});
         System.out.println(rob);
     }
 
@@ -45,6 +45,26 @@ public class HouseRobber {
         return maxProfit[0];
     }
 
+
+
+    public int robRev(int[] nums) {
+      int index = 0;
+      int[] cache = new int[nums.length];
+      Arrays.fill(cache, -1);
+      return robRevHelper(nums, index, cache);
+    }
+
+    private int robRevHelper(int[] nums, int index, int[] cache) {
+        if(index >= nums.length){
+            return 0;
+        }
+        if(cache[index] != -1){
+            return cache[index];
+        }
+        return cache[index] =  Math.max(nums[index] + robRevHelper(nums, index + 2, cache),
+        robRevHelper(nums,index+1, cache));
+    }
+
     // dynamic programming : bottom up memory optimized approach
     public int rob(int[] nums) {
         int alternateHouse = 0;
@@ -56,4 +76,21 @@ public class HouseRobber {
         }
         return adjacentHouse;
     }
+
+    public int robBottomUpRev(int[] nums) {
+        int[] maxProfit = new int[nums.length];
+        Integer max = Integer.MIN_VALUE;
+        for(int i = nums.length - 1; i >= 0; i --){
+            int neighbor = i + 2;
+            if(neighbor < nums.length){
+                maxProfit[i] = nums[i] + maxProfit[neighbor];
+            }else{
+                maxProfit[i] = nums[i];
+            }
+            System.out.println(Arrays.toString(maxProfit));
+            max =  Math.max(max, maxProfit[i]);
+        }
+        return max;
+    }
+
 }

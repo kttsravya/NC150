@@ -8,10 +8,88 @@ public class ReorderLinkedList {
         head.next.next = new ListNode(6);
         head.next.next.next = new ListNode(8);
         //head.next.next.next.next = new ListNode(10);
-        reOrder.reorderList(head);
+        reOrder.reorderListRevOptimized(head);
         System.out.println("Output");
         reOrder.printList(head);
     }
+
+
+    public void reorderListRevOptimized(ListNode head) {
+        // find the mid of the list using fast-slow pointer approach
+        // reverse the second half of the list
+        // now merge two lists
+        ListNode slowPointer = head;
+        ListNode fastPointer = head.next;
+        while (fastPointer != null){
+            fastPointer = fastPointer.next;
+            if(fastPointer != null){
+                fastPointer = fastPointer.next;
+                slowPointer = slowPointer.next;
+            }
+        }
+
+        ListNode head2 = slowPointer.next;
+        slowPointer.next = null;
+        //System.out.println("head2 is " + head2.val);
+
+        //reverse the list
+        ListNode prev = null;
+        while (head2 != null){
+            ListNode head2Next = head2.next;
+            head2.next = prev;
+            prev = head2;
+            head2 = head2Next;
+        }
+        //System.out.println(head.val + " "+ prev.val);
+        head2 = prev;
+
+        // merge both the lists
+        while(head != null && head2 != null){
+            ListNode headNext = head.next;
+            ListNode head2Next = head2.next;
+            head.next = head2;
+            head2.next = headNext;
+
+            head = headNext;
+            head2= head2Next;
+        }
+    }
+
+    //O(n ^ 2)
+    public void reorderListRev(ListNode head) {
+        int numberOfNodes = 0;
+        ListNode temp = head;
+        while (temp!= null){
+            temp = temp.next;
+            numberOfNodes ++;
+        }
+        if(numberOfNodes < 3){
+            return;
+        }
+        int i = 0;
+        temp = head;
+        while(i < numberOfNodes/2){
+            ListNode lastNode = getLastNode(temp);
+            ListNode tempsNext = temp.next;
+            temp.next = lastNode;
+            lastNode.next = tempsNext;
+            temp = tempsNext;
+            i++;
+
+        }
+    }
+
+    ListNode getLastNode(ListNode current){
+        ListNode temp = current.next;
+        ListNode prev = current;
+        while(temp.next != null){
+            prev = temp;
+            temp = temp.next;
+        }
+        prev.next = null;
+        return temp;
+    }
+
 
     public void reorderList(ListNode head) {
         ListNode temp = head;
@@ -31,8 +109,7 @@ public class ReorderLinkedList {
         ListNode head1= temp;
         ListNode head2 = slow.next;
         slow.next = null;
-        /*printList(head1);
-        printList(head2);*/
+
 
         ListNode prev = null;
         ListNode temp2 = head2;
@@ -43,8 +120,6 @@ public class ReorderLinkedList {
             temp2 = next;
         }
         head2= prev;
-        /*printList(head1);
-        printList(head2);*/
 
         System.out.println("End of reversed list");
 

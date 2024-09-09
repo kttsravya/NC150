@@ -70,16 +70,47 @@ public class WordDictionary {
         return false;
     }
 
+    public boolean searchRev(String word) {
+        int index = 0;
+        TrieNode current = root;
+        boolean isPresent = searchHelperRev(word, index, current);
+        return isPresent;
+    }
+
+    private boolean searchHelperRev(String word, int index, TrieNode current) {
+        if(index == word.length()){
+            return current.isWord;
+        }
+
+        if(word.charAt(index) != '.'){
+            if(! current.children.containsKey(word.charAt(index))){
+                return false;
+            }else{
+                return searchHelperRev(word, index+1, current.children.get(word.charAt(index)));
+            }
+        }
+        if(word.charAt(index) == '.'){
+            for(TrieNode child : current.children.values()){
+                if(child != null){
+                    if(searchHelperRev(word, index+1, child)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         WordDictionary wordDictionary = new WordDictionary();
         wordDictionary.addWord("day");
         wordDictionary.addWord("bay");
         wordDictionary.addWord("may");
-        Assert.assertFalse(wordDictionary.search("say")); // return false
-        Assert.assertTrue(wordDictionary.search("day"));
+        Assert.assertFalse(wordDictionary.searchRev("say")); // return false
+        Assert.assertTrue(wordDictionary.searchRev("day"));
         ; // return true
-        Assert.assertTrue(wordDictionary.search(".ay")); // return true
-        Assert.assertTrue(wordDictionary.search("b..")); // return true
+        Assert.assertTrue(wordDictionary.searchRev(".ay")); // return true
+        Assert.assertTrue(wordDictionary.searchRev("b..")); // return true
     }
 }
 

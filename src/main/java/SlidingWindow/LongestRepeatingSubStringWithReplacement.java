@@ -12,6 +12,30 @@ public class LongestRepeatingSubStringWithReplacement {
         System.out.println(lon);
 
     }
+
+    public int characterReplacementRevision(String s, int k) {
+        Map<Character, Integer> charFreq = new HashMap<>();
+        int mostFreqChar = 0;
+        int start = 0;
+        int longestRepeatingSubString = 0;
+
+        for(int end = 0; end < s.length(); end ++){
+            char currentChar = s.charAt(end);
+            charFreq.put(currentChar, charFreq.getOrDefault(currentChar, 0)+1);
+            mostFreqChar = Math.max(mostFreqChar, charFreq.get(currentChar));
+
+            // window became invalid if most frequent char + number of replacements < size of the current window
+            if(end - start + 1 > mostFreqChar + k){
+                // shrinking the window to make the window valid again
+                charFreq.put(s.charAt(start), charFreq.get(s.charAt(start)) - 1);
+                start ++;
+            }
+            longestRepeatingSubString = Math.max(longestRepeatingSubString, end - start + 1);
+        }
+        return longestRepeatingSubString;
+    }
+
+
     /*s="AABABBA"
             k=1*/
     public int characterReplacement(String s, int k) {
