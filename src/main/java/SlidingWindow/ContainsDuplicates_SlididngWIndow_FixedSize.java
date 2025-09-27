@@ -1,6 +1,6 @@
 package SlidingWindow;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -46,6 +46,6 @@ public class ContainsDuplicates_SlididngWIndow_FixedSize {
         int[] nums = {1,2,3,1};
         int k = 3;
         boolean containsDuplicate = cd.containsNearbyDuplicateUsingSet(nums, k);
-        Assert.assertTrue(containsDuplicate);
+        //Assert.assertTrue(containsDuplicate);
     }
 }

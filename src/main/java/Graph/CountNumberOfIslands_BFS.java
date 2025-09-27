@@ -1,6 +1,6 @@
 package Graph;
 
-import org.junit.Assert;
+
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,7 +10,7 @@ public class CountNumberOfIslands_BFS {
         CountNumberOfIslands_BFS bfs = new CountNumberOfIslands_BFS();
         char[][] grid = {{'0', '1', '1', '1', '0'}, {'0', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}};
         int numIslands = bfs.numIslands(grid);
-        Assert.assertEquals(1, numIslands);
+        //Assert.assertEquals(1, numIslands);
         System.out.println(numIslands);
     }
 

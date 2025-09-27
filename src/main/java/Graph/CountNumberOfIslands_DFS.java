@@ -1,6 +1,6 @@
 package Graph;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 public class CountNumberOfIslands_DFS {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class CountNumberOfIslands_DFS {
                          {'0', '0', '0', '0', '0'}};
         CountNumberOfIslands_DFS numberOfIslands = new CountNumberOfIslands_DFS();
         int num = numberOfIslands.numIslands(grid);
-        Assert.assertEquals(1, num);
+        //Assert.assertEquals(1, num);
     }
 
     public int numIslands(char[][] grid) {

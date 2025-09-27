@@ -1,6 +1,6 @@
 package Trie;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.HashMap;
 
@@ -59,11 +59,11 @@ public class PrefixTree {
     public static void main(String[] args){
       PrefixTree prefixTree = new PrefixTree();
         prefixTree.insert("dog");
-        Assert.assertTrue(prefixTree.search("dog"));    // return true
-        Assert.assertFalse(prefixTree.search("do"));;     // return false
-        Assert.assertTrue(prefixTree.startsWith("do")); // return true
+       // Assert.assertTrue(prefixTree.search("dog"));    // return true
+        //Assert.assertFalse(prefixTree.search("do"));;     // return false
+       // Assert.assertTrue(prefixTree.startsWith("do")); // return true
         prefixTree.insert("do");
-        Assert.assertTrue(prefixTree.search("do"));     // return true
+       // Assert.assertTrue(prefixTree.search("do"));     // return true
     }
 
 }

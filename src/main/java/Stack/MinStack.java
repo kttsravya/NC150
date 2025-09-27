@@ -1,6 +1,6 @@
 package Stack;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ public class MinStack {
         minStack.push(1);
         minStack.push(2);
         minStack.push(0);
-        Assert.assertEquals(minStack.getMin(),0);; // return 0
+        //Assert.assertEquals(minStack.getMin(),0);; // return 0
         minStack.pop();
         int top = minStack.top();    // return 2
-        Assert.assertEquals(top, 2);
-        Assert.assertEquals(minStack.getMin(), 1); // return 1
+        //Assert.assertEquals(top, 2);
+        //Assert.assertEquals(minStack.getMin(), 1); // return 1
     }
 
     public MinStack() {

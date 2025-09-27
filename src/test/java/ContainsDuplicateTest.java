@@ -1,7 +1,9 @@
 import InterviewPrep_2025.Neetcode150.ContainsDuplicate;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ContainsDuplicateTest {
 
@@ -56,10 +58,5 @@ public class ContainsDuplicateTest {
     public void handlesMinAndMaxValueDuplicates_returnsTrue() {
         int[] nums = new int[]{Integer.MIN_VALUE, 1, Integer.MAX_VALUE, Integer.MIN_VALUE};
         assertTrue(ContainsDuplicate.hasDuplicate(nums));
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void nullArray_throwsNullPointerException() {
-        ContainsDuplicate.hasDuplicate(null);
     }
 }

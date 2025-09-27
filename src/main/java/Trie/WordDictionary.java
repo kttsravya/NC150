@@ -1,7 +1,7 @@
 package Trie;
 
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 public class WordDictionary {
     TrieNode root;
@@ -106,11 +106,11 @@ public class WordDictionary {
         wordDictionary.addWord("day");
         wordDictionary.addWord("bay");
         wordDictionary.addWord("may");
-        Assert.assertFalse(wordDictionary.searchRev("say")); // return false
-        Assert.assertTrue(wordDictionary.searchRev("day"));
+        //Assert.assertFalse(wordDictionary.searchRev("say")); // return false
+       // Assert.assertTrue(wordDictionary.searchRev("day"));
         ; // return true
-        Assert.assertTrue(wordDictionary.searchRev(".ay")); // return true
-        Assert.assertTrue(wordDictionary.searchRev("b..")); // return true
+       // Assert.assertTrue(wordDictionary.searchRev(".ay")); // return true
+       // Assert.assertTrue(wordDictionary.searchRev("b..")); // return true
     }
 }
 

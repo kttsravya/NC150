@@ -1,6 +1,5 @@
 package BinarySearch;
 
-import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,10 +39,10 @@ public class TimeBasedKeyValueStore {
     public static void main(String[] args){
         TimeBasedKeyValueStore timeMap = new TimeBasedKeyValueStore();
         timeMap.set("alice", "happy", 1);  // store the key "alice" and value "happy" along with timestamp = 1.
-        Assert.assertEquals(timeMap.get("alice", 1), "happy");        // return "happy"
-        Assert.assertEquals(timeMap.get("alice", 2), "happy");          // return "happy", there is no value stored for timestamp 2, thus we return the value at timestamp 1.
+        //Assert.assertEquals(timeMap.get("alice", 1), "happy");        // return "happy"
+        //Assert.assertEquals(timeMap.get("alice", 2), "happy");          // return "happy", there is no value stored for timestamp 2, thus we return the value at timestamp 1.
         timeMap.set("alice", "sad", 3);    // store the key "alice" and value "sad" along with timestamp = 3.
-        Assert.assertEquals(timeMap.get("alice", 3),"sad");
+        //Assert.assertEquals(timeMap.get("alice", 3),"sad");
     }
 }
 

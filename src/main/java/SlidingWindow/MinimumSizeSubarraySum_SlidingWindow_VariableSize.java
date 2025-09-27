@@ -1,6 +1,6 @@
 package SlidingWindow;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 public class MinimumSizeSubarraySum_SlidingWindow_VariableSize {
 
@@ -32,6 +32,6 @@ public class MinimumSizeSubarraySum_SlidingWindow_VariableSize {
         int[] nums = {2, 3, 1, 2, 4, 3};
         MinimumSizeSubarraySum_SlidingWindow_VariableSize minimumSizeSubarraySumSlidingWindowVariableSize = new MinimumSizeSubarraySum_SlidingWindow_VariableSize();
         int minimumLength = minimumSizeSubarraySumSlidingWindowVariableSize.minSubArrayLen(target, nums);
-        Assert.assertEquals(2,minimumLength);
+        //Assert.assertEquals(2,minimumLength);
     }
 }

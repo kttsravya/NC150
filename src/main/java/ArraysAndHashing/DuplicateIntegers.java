@@ -1,6 +1,6 @@
 package ArraysAndHashing;
 
-import org.junit.Assert;
+
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -31,15 +31,12 @@ public class DuplicateIntegers {
     public static void main(String[] args){
         DuplicateIntegers di = new DuplicateIntegers();
         boolean hasDuplicates = di.hasDuplicate(new int[]{1, 2, 3});
-        Assert.assertFalse(hasDuplicates);
         System.out.println(hasDuplicates);
 
         hasDuplicates = di.hasDuplicate(new int[]{1, 2, 3, 3});
-        Assert.assertTrue(hasDuplicates);
         System.out.println(hasDuplicates);
 
         hasDuplicates = di.hasDuplicateUsingSort(new int[]{1, 2, 3, 3});
-        Assert.assertTrue(hasDuplicates);
         System.out.println(hasDuplicates);
     }
 }

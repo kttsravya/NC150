@@ -1,6 +1,5 @@
 package BinarySearch;
 
-import org.junit.Assert;
 
 public class BinarySearch {
     public int search(int[] nums, int target) {
@@ -99,17 +98,17 @@ public class BinarySearch {
         int[] nums = {-1,0,2,4,6,8};
         int target = 4;
         int targetIndex = binarySearch.binarySearchRecursive(nums, 0, nums.length - 1, target);
-        Assert.assertEquals(3, targetIndex);
+        //Assert.assertEquals(3, targetIndex);
 
         nums = new int[]{-1,0,2,4,4,6,8};
         target = 4;
         targetIndex = binarySearch.binarySearchIterative_FindLastOccurrenceOfTargetElement(nums, target);
-        Assert.assertEquals(4, targetIndex);
+        //Assert.assertEquals(4, targetIndex);
 
         targetIndex = binarySearch.binarySearchIterative_FindLastOccurrenceOfTargetElement_find(nums, target);
-        Assert.assertEquals(4, targetIndex);
+        //Assert.assertEquals(4, targetIndex);
 
         targetIndex = binarySearch.binarySearchIterative_FindFirstOccurrenceOfTargetElement(nums, target);
-        Assert.assertEquals(3, targetIndex);
+        //Assert.assertEquals(3, targetIndex);
     }
 }

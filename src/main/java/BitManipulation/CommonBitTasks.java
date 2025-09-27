@@ -1,6 +1,6 @@
 package BitManipulation;
 
-import org.junit.Assert;
+
 
 public class CommonBitTasks {
     public static void main(String[] args){
@@ -9,27 +9,27 @@ public class CommonBitTasks {
 
         boolean isOne =  commonBitTasks.getBit(num, 1);
         System.out.println(isOne);
-        Assert.assertTrue(isOne);
+        //Assert.assertTrue(isOne);
 
         int setNumber =  commonBitTasks.setBit(num, 2);
         System.out.println(setNumber);
-        Assert.assertEquals(6, setNumber);
+        //Assert.assertEquals(6, setNumber);
 
         int clearNumber =  commonBitTasks.clearBit(num, 1);
         System.out.println(clearNumber);
-        Assert.assertEquals(0, clearNumber);
+        //Assert.assertEquals(0, clearNumber);
 
         int clearAllBitsFromMostSignificantBitThroughI =  commonBitTasks.clearAllBitFromMostSignificantBitThroughIInclusive(16, 1);
         System.out.println(clearAllBitsFromMostSignificantBitThroughI);
-        Assert.assertEquals(0, clearAllBitsFromMostSignificantBitThroughI);
+        //Assert.assertEquals(0, clearAllBitsFromMostSignificantBitThroughI);
 
         int clearAllBitsIThrough0 =  commonBitTasks.clearBitsIThrough0(16, 4);
         System.out.println(clearAllBitsIThrough0);
-        Assert.assertEquals(0, clearAllBitsIThrough0);
+        //Assert.assertEquals(0, clearAllBitsIThrough0);
 
         int updateBit =  commonBitTasks.updateBit(16, 4, false);
         System.out.println(updateBit);
-        Assert.assertEquals(0, updateBit);
+        //Assert.assertEquals(0, updateBit);
 
         int N = 0b10000000000;
         int M = 0b10011;

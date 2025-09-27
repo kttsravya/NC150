@@ -1,6 +1,6 @@
 package TwoPointers;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.Locale;
 
@@ -84,16 +84,16 @@ public class ValidPalindrome {
         String s = "Was it a car or a cat I 0saw?";
         System.out.println(s.toLowerCase(Locale.ENGLISH));
         boolean isPanlindrome = vp.isPalindromeUsingBuiltInMethods(s);
-        Assert.assertFalse(isPanlindrome);
+        //Assert.assertFalse(isPanlindrome);
 
         s = "         ";
         System.out.println(s.toLowerCase(Locale.ENGLISH));
         isPanlindrome = vp.isPalindromeUsingBuiltInMethods(s);
-        Assert.assertTrue(isPanlindrome);
+        //Assert.assertTrue(isPanlindrome);
 
         s="dddddd";
         System.out.println(s.toLowerCase());
         isPanlindrome = vp.isPalindromeUsingBuiltInMethods(s);
-        Assert.assertTrue(isPanlindrome);
+       // Assert.assertTrue(isPanlindrome);
     }
 }

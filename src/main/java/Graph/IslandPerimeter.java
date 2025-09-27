@@ -1,6 +1,6 @@
 package Graph;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 public class IslandPerimeter {
     int perimeter = 0;
@@ -9,7 +9,7 @@ public class IslandPerimeter {
         IslandPerimeter perimeter = new IslandPerimeter();
         int[][] grid = {{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
         int peri = perimeter.islandPerimeter(grid);
-        Assert.assertEquals(16, peri);
+       // Assert.assertEquals(16, peri);
     }
 
 

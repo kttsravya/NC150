@@ -1,6 +1,6 @@
 package Stack;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.Stack;
 
@@ -64,6 +64,6 @@ public class ValidParentheses {
         ValidParentheses validParentheses = new ValidParentheses();
         String s = "([{}])";
         boolean isValid = validParentheses.isValidUsingStack(s);
-        Assert.assertTrue(isValid);
+        //Assert.assertTrue(isValid);
     }
 }

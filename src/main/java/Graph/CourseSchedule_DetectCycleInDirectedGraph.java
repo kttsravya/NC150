@@ -1,6 +1,6 @@
 package Graph;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ public class CourseSchedule_DetectCycleInDirectedGraph {
     public static void main(String[] args) {
             CourseSchedule_DetectCycleInDirectedGraph courseSchedule = new CourseSchedule_DetectCycleInDirectedGraph();
             boolean canFin = courseSchedule.canFinish(2, new int[][]{{0,1}});
-            Assert.assertEquals(true, canFin);
+            //Assert.assertEquals(true, canFin);
     }
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
