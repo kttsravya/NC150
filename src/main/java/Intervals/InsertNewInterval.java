@@ -7,7 +7,7 @@ public class InsertNewInterval {
 
     public static void main(String[] args) {
         InsertNewInterval insertNewInterval = new InsertNewInterval();
-        int[][] result = insertNewInterval.insert(new int[][]{{1, 2}, {3, 5}, {9, 10}}, new int[]{6, 7});
+        int[][] result = insertNewInterval.insertInterval(new int[][]{{8, 10}, {12, 15}}, new int[]{10, 12});
         for (int i = 0; i < result.length; i++) {
             System.out.print("[ ");
             for(int j = 0; j < result[i].length; j ++){
@@ -15,6 +15,33 @@ public class InsertNewInterval {
             }
             System.out.print("]");
         }
+    }
+
+    public static int[][] insertInterval(int[][] existingIntervals, int[] newInterval){
+        List<int[]> mergedIntervals = new ArrayList<>();
+        int i = 0;
+        while(i < existingIntervals.length && existingIntervals[i][0] < newInterval[0]) {
+            mergedIntervals.add(existingIntervals[i]);
+            i++;
+        }
+        if(mergedIntervals.isEmpty() || mergedIntervals.get(mergedIntervals.size() - 1)[1] < newInterval[0]) {
+            mergedIntervals.add(newInterval);
+        }else {
+            int[] prev = mergedIntervals.get(mergedIntervals.size() - 1);
+            prev[1] = Math.max(prev[1], newInterval[1]);
+        }
+        int[] prev = mergedIntervals.get(mergedIntervals.size() - 1);
+        while(i < existingIntervals.length){
+            int[] current = existingIntervals[i];
+            if(prev[1] < current[0]){
+                mergedIntervals.add(current);
+                prev = current;
+            }else{
+                prev[1] = Math.max(prev[1], current[1]);
+            }
+            i++;
+        }
+        return mergedIntervals.toArray(new int[][]{});
     }
 
     public int[][] insert(int[][] intervals, int[] newInterval) {

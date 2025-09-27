@@ -15,8 +15,26 @@ public class LowestCommonAncestor {
         tree.right.right = new TreeNode(9);
         TreeNode p= new TreeNode(3);
         TreeNode q = new TreeNode(8);
-        TreeNode lcsNode = lcs.lowestCommonAncestor_Recusrive_BST(tree, p, q);
+        TreeNode lcsNode = lcs.lowestCommonAncestor_Revision(tree, p, q);
         System.out.println(lcsNode.val);
+    }
+
+    public TreeNode lowestCommonAncestor_Revision(TreeNode root, TreeNode p, TreeNode q){
+        return lowestCommonAncestor_RevisionHelper(root, p, q);
+
+    }
+
+
+    public TreeNode lowestCommonAncestor_RevisionHelper(TreeNode root, TreeNode p, TreeNode q) {
+        if(root.val == p.val || root.val == q.val || ((p.val < root.val || q.val < root.val) && (p.val > root.val || q.val > root.val))){
+            return root;
+        }
+        if(p.val < root.val && q.val < root.val){
+            return lowestCommonAncestor_RevisionHelper(root.left, p, q);
+        }else if(p.val > root.val && q.val > root.val){
+            return lowestCommonAncestor_RevisionHelper(root.right, p, q);
+        }
+        return root;
     }
 
     public TreeNode lowestCommonAncestor_Iterative_BST(TreeNode root, TreeNode p, TreeNode q) {

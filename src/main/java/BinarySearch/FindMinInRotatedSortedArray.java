@@ -3,7 +3,7 @@ package BinarySearch;
 public class FindMinInRotatedSortedArray {
     public static void main(String[] args){
         FindMinInRotatedSortedArray findMin = new FindMinInRotatedSortedArray();
-        int min = findMin.findMin(new int[]{4,5,6,7});
+        int min = findMin.findMinRev2(new int[]{5,0,1,2});
         System.out.println(min);
     }
 
@@ -28,4 +28,43 @@ public class FindMinInRotatedSortedArray {
         return min;
     }
 
+    public int findMinRev(int[] nums) {
+       int low = 0;
+       int high = nums.length - 1;
+       if(nums[low] < nums[high]){
+           return nums[low];
+       }
+       while(low <= high){
+           int mid = (low + high)/2;
+           if(nums[mid] > nums[high]){
+               low = mid + 1;
+           }else if (nums[mid] < nums[low]){
+              high = mid;
+           }else{
+               return nums[low];
+           }
+       }
+       return -1;
+
+    }
+
+    public int findMinRev2(int[] nums) {
+       int low = 0;
+       int high = nums.length - 1;
+       int mid = (low + high)/2;
+       if(nums[low] < nums[high]){
+           return nums[low];
+       }
+       while(low <= high){
+            mid = (low + high)/2;
+            if(nums[mid] < nums[high] && nums[mid - 1] < nums[mid]){
+                high = mid - 1;
+            }else if (nums[mid] > nums[high]){
+                low = mid + 1;
+            }else{
+               return nums[mid];
+            }
+       }
+       return -1;
+    }
 }

@@ -18,6 +18,7 @@ public class AnagramGroups {
                 sigInt[index] = sigInt[index] + 1;
             }
             String sigStr = Arrays.toString(sigInt);
+            System.out.println(sigStr);
             List<String> grpAnagramList = anagramMap.getOrDefault(sigStr, new ArrayList<>());
             grpAnagramList.add(currentStr);
             anagramMap.put(sigStr, grpAnagramList);

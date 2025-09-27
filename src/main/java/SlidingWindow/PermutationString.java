@@ -2,14 +2,73 @@ package SlidingWindow;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class PermutationString {
     public static void main(String[] args){
         PermutationString permutationString = new PermutationString();
-        boolean checkInc =  permutationString.permutationStringSlidingWindowUsingMatches("abc", "lecabee");
+        boolean checkInc =  permutationString.permutationStringSlidingWindowUsingMatchesRev("adc", "dcda");
         System.out.println("checkInc"+ checkInc);
 
     }
+
+    public boolean permutationStringSlidingWindowUsingMatchesRev(String s1, String s2) {
+        if(s1.length() > s2.length()){
+            return false;
+        }
+        HashMap<Character,Integer> targetMap = new HashMap<>();
+        HashMap<Character,Integer> windowMap = new HashMap<>();
+        for(int i = 0; i < s1.length(); i ++){
+            targetMap.put(s1.charAt(i), targetMap.getOrDefault(s1.charAt(i), 0) +1);
+        }
+        int targetNumberOfCharacters = targetMap.size();
+        int currentNumberOfCharacters = 0;
+        int start = 0;
+        for(int end = 0; end < s2.length(); end ++){
+            char currentChar = s2.charAt(end);
+            if(targetMap.containsKey(currentChar)){
+                windowMap.put(currentChar, windowMap.getOrDefault(currentChar, 0) + 1);
+                if(windowMap.get(currentChar).equals(targetMap.get(currentChar))){
+                    currentNumberOfCharacters ++;
+                }else if (windowMap.get(currentChar) > targetMap.get(currentChar)){
+                    while(start < end && s2.charAt(start) != currentChar){
+                        if(targetMap.containsKey(s2.charAt(start))){
+                            if(windowMap.get(s2.charAt(start)).equals(targetMap.get(s2.charAt(start)))){
+                                currentNumberOfCharacters --;
+                            }
+                            windowMap.put(s2.charAt(start), windowMap.get(s2.charAt(start)) - 1);
+                        }
+                        start++;
+                    }
+                    if(s2.charAt(start) == currentChar){
+                        windowMap.put(s2.charAt(start), windowMap.get(s2.charAt(start)) - 1);
+                        start++;
+                    }
+                }
+            }else{ // appeared a character not in target set
+                while(start <= end){
+                    if(targetMap.containsKey(s2.charAt(start))){
+                        windowMap.put(s2.charAt(start), windowMap.get(s2.charAt(start)) - 1);
+                    }
+                    start++;
+                }
+                currentNumberOfCharacters = 0;
+            }
+            if(currentNumberOfCharacters == targetNumberOfCharacters){
+                return true;
+            }
+            //printWindowMap(windowMap);
+         }
+        return false;
+    }
+
+    private void printWindowMap(HashMap<Character, Integer> windowMap) {
+        for(Map.Entry<Character, Integer> entry:  windowMap.entrySet()){
+            System.out.print(entry.getKey() + " "+ entry.getValue() + "::");
+        }
+        System.out.println();
+    }
+
 
     public boolean permutationStringSlidingWindowUsingMatches(String s1, String s2) {
         if(s1.length() > s2.length()){

@@ -6,7 +6,35 @@ import java.util.List;
 public class GenerateParenthesis {
     public static void main(String[] args){
         GenerateParenthesis generateParenthesis = new GenerateParenthesis();
-        List<String> result = generateParenthesis.generateParenthesis_BacktrackingWithConditions(3);
+        List<String> result = generateParenthesis.generateParenthesisWithBackTracking(3);
+    }
+
+    public List<String> generateParenthesisWithBackTracking(int n){
+        StringBuilder sb = new StringBuilder();
+        List<String> res = new ArrayList<>();
+        int openN = 0;
+        int closeN = 0;
+        generateParenthesisWithBackTrackingHelper(n, openN, closeN, sb, res);
+        System.out.println(res);
+        return res;
+    }
+
+    private void generateParenthesisWithBackTrackingHelper(int n, int openN, int closeN, StringBuilder current, List<String> res) {
+        if(openN == n && closeN == n){
+            res.add(current.toString());
+        }
+
+        if(openN < n){
+            current.append("(");
+            generateParenthesisWithBackTrackingHelper(n, openN + 1, closeN, current, res);
+            current.deleteCharAt(current.length() - 1);
+        }
+
+        if(closeN < openN){
+            current.append(")");
+            generateParenthesisWithBackTrackingHelper(n, openN, closeN+1, current, res);
+            current.deleteCharAt(current.length() - 1);
+        }
     }
 
     public List<String> generateParenthesis_BacktrackingWithConditions(int n){

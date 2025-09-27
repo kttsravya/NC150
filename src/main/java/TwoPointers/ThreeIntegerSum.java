@@ -8,8 +8,41 @@ public class ThreeIntegerSum {
     public static void main(String[] args) {
         ThreeIntegerSum threeSum = new ThreeIntegerSum();
         //List<List<Integer>> res = threeSum.threeSumBacktracking(new int[]{-1, 0, 1, 2, -1, -4});
-        List<List<Integer>> res = threeSum.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        /*List<List<Integer>> res = threeSum.threeSumRevision(new int[]{-1, 0, 1, 2, -1, -4});*/
+        List<List<Integer>> res = threeSum.threeSumRevision(new int[]{0, 0, 0});
         System.out.println(res.toString());
+    }
+
+    public List<List<Integer>> threeSumRevision(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i = 0; i < nums.length; i ++){
+            if(i > 0 && nums[i] == nums[i - 1]){
+                continue;
+            }
+            int x = nums[i];
+            int leftPointer = i+1;
+            int rightPointer = nums.length - 1;
+            int target = x * -1;
+            while (leftPointer < rightPointer){
+                if(nums[leftPointer] + nums[rightPointer] == target){
+                    List<Integer> pair = new ArrayList<>();
+                    pair.add(x);
+                    pair.add(nums[leftPointer]);
+                    pair.add(nums[rightPointer]);
+                    result.add(pair);
+                    leftPointer ++;
+                    while(leftPointer <= rightPointer && (nums[leftPointer] == nums[leftPointer - 1])){
+                        leftPointer ++;
+                    }
+                } else if(nums[leftPointer] + nums[rightPointer] < target){
+                    leftPointer ++;
+                }else if(nums[leftPointer] + nums[rightPointer] > target){
+                    rightPointer --;
+                }
+            }
+        }
+        return result;
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
@@ -46,6 +79,8 @@ public class ThreeIntegerSum {
         }
         return result;
     }
+
+
 
 
     public List<List<Integer>> threeSumFor(int[] nums){
